@@ -1,0 +1,523 @@
+Create Database [PackageDB]
+Go
+USE [PackageDB]
+GO
+/****** Object:  Table [dbo].[Customer]    Script Date: 4/22/2024 10:45:54 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Customer](
+	[ID] [nvarchar](200) NOT NULL,
+	[UserName] [nvarchar](200) NULL,
+	[FullName] [nvarchar](500) NULL,
+	[PhoneNumber] [nvarchar](100) NULL,
+	[Email] [varchar](50) NULL,
+	[TotalMoney] [varchar](200) NULL,
+	[CreatedBy] [nvarchar](200) NULL,
+	[CreatedDate] [varchar](200) NULL,
+	[UpdatedBy] [nvarchar](200) NULL,
+	[UpdatedDate] [varchar](200) NULL,
+	[IsDeleted] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Customer_Package]    Script Date: 4/22/2024 10:45:54 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Customer_Package](
+	[ID] [nvarchar](200) NOT NULL,
+	[CustomerID] [nvarchar](200) NULL,
+	[PackageID] [nvarchar](200) NULL,
+	[CreatedBy] [nvarchar](200) NULL,
+	[CreatedDate] [varchar](200) NULL,
+	[UpdatedBy] [nvarchar](200) NULL,
+	[UpdatedDate] [varchar](200) NULL,
+	[IsDeleted] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[LogRequest]    Script Date: 4/22/2024 10:45:54 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[LogRequest](
+	[ID] [uniqueidentifier] NOT NULL,
+	[ModelRequest] [nvarchar](max) NULL,
+	[ModelResponse] [nvarchar](max) NULL,
+	[StatusCode] [varchar](200) NULL,
+	[CreateBy] [varchar](200) NULL,
+	[CreatedDate] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[MNG_HistoryTransaction]    Script Date: 4/22/2024 10:45:54 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[MNG_HistoryTransaction](
+	[ID] [nvarchar](200) NOT NULL,
+	[CustomerID] [nvarchar](200) NULL,
+	[PackageID] [nvarchar](200) NULL,
+	[FullName] [nvarchar](500) NULL,
+	[NamePackage] [nvarchar](200) NULL,
+	[TypeTransaction] [nvarchar](200) NULL,
+	[PricePackage] [varchar](200) NULL,
+	[CreatedBy] [nvarchar](200) NULL,
+	[CreatedDate] [datetime] NULL,
+	[UpdatedBy] [nvarchar](200) NULL,
+	[UpdatedDate] [datetime] NULL,
+	[IsDeleted] [int] NULL,
+	[Decription] [nvarchar](max) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[MNG_Package]    Script Date: 4/22/2024 10:45:54 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[MNG_Package](
+	[ID] [nvarchar](200) NOT NULL,
+	[CodePackage] [nvarchar](200) NULL,
+	[NamePackage] [nvarchar](500) NULL,
+	[TypePackage] [nvarchar](100) NULL,
+	[PricePackage] [varchar](50) NULL,
+	[Decription] [nvarchar](max) NULL,
+	[CreatedBy] [nvarchar](200) NULL,
+	[CreatedDate] [varchar](200) NULL,
+	[UpdatedBy] [nvarchar](200) NULL,
+	[UpdatedDate] [varchar](200) NULL,
+	[IsDeleted] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+INSERT [dbo].[Customer] ([ID], [UserName], [FullName], [PhoneNumber], [Email], [TotalMoney], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'3020857E-5A27-47A1-B474-19D1B77822BD', N'hoanlv', N'hoanlv', N'09555343', NULL, N'30000000', N'sys', N'Apr 15 2024  4:10PM', NULL, NULL, 0)
+GO
+INSERT [dbo].[Customer] ([ID], [UserName], [FullName], [PhoneNumber], [Email], [TotalMoney], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'3020857E-5A27-47A1-B474-19D1B77872BD', N'admin', N'admin', N'012345678', NULL, N'100000', N'sys', N'Apr 15 2024  4:10PM', NULL, NULL, 0)
+GO
+INSERT [dbo].[Customer_Package] ([ID], [CustomerID], [PackageID], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'46e60822-90d2-4c0a-ab1f-88beb8e4d40d', N'3020857E-5A27-47A1-B474-19D1B77872BD', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'admin', N'15/04/2024 16:20:46', N'admin', N'15/04/2024 17:22:14', 1)
+GO
+INSERT [dbo].[Customer_Package] ([ID], [CustomerID], [PackageID], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'53dabbc6-8235-4fc6-97a7-e815ec1ab633', N'3020857E-5A27-47A1-B474-19D1B77872BD', N'002', N'admin', N'16/04/2024 13:07:41', N'admin', N'16/04/2024 13:07:41', 0)
+GO
+INSERT [dbo].[Customer_Package] ([ID], [CustomerID], [PackageID], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'557b1251-0c80-419b-b464-90585161b662', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'sys', N'17/04/2024 14:39:39', N'sys', N'17/04/2024 14:39:39', 0)
+GO
+INSERT [dbo].[Customer_Package] ([ID], [CustomerID], [PackageID], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'76050176-9b9c-432b-a841-dc494fe1dac6', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'7536da61-a845-4909-a3af-5dd5b8da6aa6', N'hoanlv', N'16/04/2024 11:16:50', N'hoanlv', N'16/04/2024 11:16:50', 0)
+GO
+INSERT [dbo].[Customer_Package] ([ID], [CustomerID], [PackageID], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'7f84e2db-e3d4-4219-b5d5-c5047511b2d6', N'3020857E-5A27-47A1-B474-19D1B77872BD', N'574a8d07-e113-4b04-8805-81e68c2bdb21', N'admin', N'16/04/2024 09:06:21', N'admin', N'16/04/2024 09:07:02', 1)
+GO
+INSERT [dbo].[Customer_Package] ([ID], [CustomerID], [PackageID], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'883ab68e-5f56-4e6a-a57d-bc03d9620184', N'3020857E-5A27-47A1-B474-19D1B77872BD', N'7ea9cb38-89db-4634-9b4e-d3fe31077cc2', N'admin', N'15/04/2024 17:25:09', N'admin', N'15/04/2024 17:25:09', 0)
+GO
+INSERT [dbo].[Customer_Package] ([ID], [CustomerID], [PackageID], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'91e4abdc-c293-4d7d-89ac-a622268651b9', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'hoanlv', N'16/04/2024 11:16:42', N'hoanlv', N'16/04/2024 11:17:17', 1)
+GO
+INSERT [dbo].[Customer_Package] ([ID], [CustomerID], [PackageID], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'b9074632-e7bb-44c8-9196-9822ab36196a', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'574a8d07-e113-4b04-8805-81e68c2bdb21', N'hoanlv', N'22/04/2024 09:11:15', N'hoanlv', N'22/04/2024 09:11:15', 0)
+GO
+INSERT [dbo].[Customer_Package] ([ID], [CustomerID], [PackageID], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'cdfa73d6-26c9-4afe-bc71-36d901817fbe', N'3020857E-5A27-47A1-B474-19D1B77872BD', N'002', N'admin', N'15/04/2024 16:13:07', N'admin', N'15/04/2024 17:35:27', 1)
+GO
+INSERT [dbo].[Customer_Package] ([ID], [CustomerID], [PackageID], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'd8782986-ba73-44c3-b4a5-edd0323fe066', N'3020857E-5A27-47A1-B474-19D1B77872BD', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'admin', N'15/04/2024 17:35:20', N'admin', N'15/04/2024 17:35:20', 0)
+GO
+INSERT [dbo].[Customer_Package] ([ID], [CustomerID], [PackageID], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'e2dded95-504d-4837-a2b2-f4e2f4a21f39', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'sys', N'17/04/2024 13:21:53', N'sys', N'17/04/2024 13:39:02', 1)
+GO
+INSERT [dbo].[Customer_Package] ([ID], [CustomerID], [PackageID], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'e4782ade-666d-438e-b22e-916069b41740', N'3020857E-5A27-47A1-B474-19D1B77872BD', N'7536da61-a845-4909-a3af-5dd5b8da6aa6', N'admin', N'16/04/2024 11:07:19', N'admin', N'16/04/2024 11:07:19', 0)
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'6f2f9d90-e0c1-43d3-903c-018818bb884f', N'{"ID":"002","CodePackage":"PK002","NamePackage":"Gói cước 23","TypePackage":"","PricePackage":"50.000","Decription":"","CreatedBy":"","CreatedDate":"","UpdatedBy":"admin","UpdatedDate":""}', N'{"Message":"Cập nhật thành công","StatusCode":"OK"}', N'OK', N'admin', CAST(N'2024-04-17T13:39:41.263' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'59c34a46-b13f-44b9-aa26-01f4b02c6bb6', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"524dbd9b-864c-4db5-8cbf-016b2168c9ce","CreatedBy":"sys"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T14:49:28.303' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'19c6edd2-f508-4f82-8187-042b21c38789', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"54722dc0-fc0b-47b9-bef7-e6a243eb7baf","CreatedBy":"sys"}', N'{"Message":"Không tìm thấy gói cước đăng ký bạn đăng ký","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T14:39:39.143' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'ba54fa72-f689-494f-901e-18909aa305f1', N'{"ID":"002","CodePackage":"PK002","NamePackage":"Gói cước 23","TypePackage":"","PricePackage":"50.000","Decription":"","CreatedBy":"","CreatedDate":"","UpdatedBy":"admin","UpdatedDate":""}', N'{"Message":"Cập nhật thành công","StatusCode":"OK"}', N'OK', N'admin', CAST(N'2024-04-17T16:40:22.083' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'01a908ff-cff6-452c-bb44-1bed5095431b', N'{"ID":"0f6920af-f5e5-4724-9460-c33cc710afa8","CodePackage":"PK002","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"sys","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Mã gói cước đã tồn tại","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T13:41:03.973' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'5d256ee9-64b4-41fc-8072-1c83f1b11207', N'{"ID":"202404171640","CodePackage":"20240417164022","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"sys","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Thêm mới thành công","StatusCode":"OK"}', N'OK', N'sys', CAST(N'2024-04-17T16:40:22.010' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'dc10d000-552d-4b25-bdef-237551f0f7ec', N'{"ID":"202404171439","CodePackage":"20240417143956","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"sys","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Thêm mới thành công","StatusCode":"OK"}', N'OK', N'sys', CAST(N'2024-04-17T14:39:56.240' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'4ea5845e-0f74-4a97-96c7-2697e82211c9', N'{"ID":"331b0381-7c9f-42da-8aba-ac3b0e123c10","CodePackage":"PK002","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"sys","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Mã gói cước đã tồn tại","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T13:55:03.140' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'cd8fa69f-fa08-43a5-9faa-279046514794', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"524dbd9b-864c-4db5-8cbf-016b2168c9ce","CreatedBy":"sys"}', N'{"Message":"Không tìm thấy gói cước đăng ký bạn đăng ký","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T13:31:40.490' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'658c9aa5-e91b-4489-ad8b-27a3754e911c', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"a989f159-3b3d-43f8-9be1-1567ef37b4d2","CreatedBy":"sys"}', N'{"Message":"Không tìm thấy gói cước đăng ký bạn đăng ký","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-22T09:12:14.377' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'f315409f-6041-4260-96ed-2a1c1e864c3a', N'{"ID":"c8d886e4-a381-4e52-a485-41d9b7b42349","CodePackage":"PK002","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"sys","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Mã gói cước đã tồn tại","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-22T09:12:14.423' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'623c78cb-b6db-4c2e-9a13-2f3a761af908', N'{"ID":"202404171356","Name":"sys","Code":""}', N'{"Message":"Xóa thành công","StatusCode":"OK"}', N'OK', N'sys', CAST(N'2024-04-17T13:56:05.413' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'd6d46a4d-2366-4b94-bd3e-2ffddd77a975', N'{"ID":"5f256109-6990-43e7-a392-4b763cf0f0fb","CodePackage":"20240417135605","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"","CreatedDate":"","UpdatedBy":"sys","UpdatedDate":""}', N'{"Message":"Không tìm thấy gói cước","StatusCode":"NotFound"}', N'NotFound', N'sys', CAST(N'2024-04-17T13:56:05.450' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'ed5be569-de67-49f1-a4bc-3034699dbb36', N'{"ID":"24f5adb1-b2fb-4e50-8303-5cff53aeb51f","CodePackage":"PK002","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"sys","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Mã gói cước đã tồn tại","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T14:49:28.360' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'f35f18fe-3999-41ab-a2b1-32ee33de1b68', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"524dbd9b-864c-4db5-8cbf-016b2168c9ce","CreatedBy":"sys"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-22T09:12:14.353' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'71289380-52f6-44cd-9f03-3732e2875b30', N'{"ID":"bcf21f46-6f54-47d7-9631-3ca9a1dce336","CodePackage":"2024041713","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"sys","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Thêm mới thành công","StatusCode":"OK"}', N'OK', N'sys', CAST(N'2024-04-17T13:21:56.607' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'547e09a3-77bb-4117-ac02-384a2c2d39f6', N'{"CusId":"e2dded95-504d-4837-a2b2-f4e2f4a21f39","PackageId":"524dbd9b-864c-4db5-8cbf-016b2168c9ce","CreatedBy":"sys"}', N'{"Message":"Hủy gói cước thành công","StatusCode":"OK"}', N'OK', N'sys', CAST(N'2024-04-17T13:39:02.997' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'839f8c3d-72a0-4073-8b2c-391337471b3c', N'{"ID":"57fe2a30-4921-4884-959a-96189b5bfd16","CodePackage":"2024041713","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"sys","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Mã gói cước đã tồn tại","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T13:41:29.947' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'24594919-b1c3-41ee-9f16-39196532dbed', N'{"ID":"4c0c1f5c-db76-42e4-83eb-69b6109ef331","CodePackage":"20240417132156","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"","CreatedDate":"","UpdatedBy":"sys","UpdatedDate":""}', N'{"Message":"Không tìm thấy gói cước","StatusCode":"NotFound"}', N'NotFound', N'sys', CAST(N'2024-04-17T13:21:56.713' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'a19eaf4b-322f-4f37-a2cc-3b3eb3f42fd4', N'{"ID":"e0d60989-01fc-4099-bda1-7ffb41066028","CodePackage":"20240417135503","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"","CreatedDate":"","UpdatedBy":"sys","UpdatedDate":""}', N'{"Message":"Không tìm thấy gói cước","StatusCode":"NotFound"}', N'NotFound', N'sys', CAST(N'2024-04-17T13:55:03.417' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'7b968479-a8cb-42a6-aee2-3f6a6d4a8acf', N'{"ID":"01ca55bf-3f0b-44aa-a6ba-583e79f67709","CodePackage":"PK002","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"sys","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Mã gói cước đã tồn tại","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T13:41:26.673' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'0461523f-45e6-4bd7-9f14-4061cf22a705', N'{"ID":"e83b2331-2a83-4d37-99ad-6f3d39add9b3","CodePackage":"20240422091632","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"","CreatedDate":"","UpdatedBy":"sys","UpdatedDate":""}', N'{"Message":"Không tìm thấy gói cước","StatusCode":"NotFound"}', N'NotFound', N'sys', CAST(N'2024-04-22T09:16:32.887' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'c70fd142-fa55-42ab-985a-411c0d400ee7', N'{"CusId":"e2dded95-504d-4837-a2b2-f4e2f4a21f39","PackageId":"524dbd9b-864c-4db5-8cbf-016b2168c9ce","CreatedBy":"sys"}', N'{"Message":"Không tìm thấy gói cước đăng ký bạn đăng ký","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T14:49:28.330' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'4b01fef7-91d4-4608-b71e-425a18a9d724', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"bb5f2439-040a-42cf-9794-851cc1c4f937","CreatedBy":"sys"}', N'{"Message":"Không tìm thấy gói cước đăng ký bạn đăng ký","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T13:21:53.213' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'7e6a2f08-acc1-44f8-9c15-42775f83f001', N'{"ID":"c4e03a0c-f0ac-4d54-a799-7f732dda6539","CodePackage":"PK002","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"sys","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Mã gói cước đã tồn tại","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T13:48:29.567' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'811bc93e-540a-46b5-ad94-472262b1d8d3', N'{"ID":"7ae44e89-c123-4484-bc04-f9546a472196","CodePackage":"PK002","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"sys","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Mã gói cước đã tồn tại","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-22T09:13:27.743' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'18da866c-238e-43ed-9223-4c25da29a52a', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"da45eae4-535c-4388-b75f-003304956135","CreatedBy":"sys"}', N'{"Message":"Không tìm thấy gói cước đăng ký bạn đăng ký","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-22T09:13:27.697' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'a6c0db50-74ff-42bc-bb5a-50846c037994', N'{"ID":"202404171439","Name":"sys","Code":""}', N'{"Message":"Xóa thành công","StatusCode":"OK"}', N'OK', N'sys', CAST(N'2024-04-17T14:39:56.263' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'aec78f99-7410-4086-937d-5410d7aa31cb', N'{"ID":"741609c6-c4b9-4852-849c-cba5ab2c0d81","CodePackage":"20240417133941","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"","CreatedDate":"","UpdatedBy":"sys","UpdatedDate":""}', N'{"Message":"Không tìm thấy gói cước","StatusCode":"NotFound"}', N'NotFound', N'sys', CAST(N'2024-04-17T13:39:41.257' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'b68e7280-49bc-40e9-92af-583c16f77f89', N'{"ID":"202404220913","CodePackage":"20240422091327","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"sys","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Thêm mới thành công","StatusCode":"OK"}', N'OK', N'sys', CAST(N'2024-04-22T09:13:27.753' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'1c62ba62-064f-4cc2-99ed-59812e466e34', N'{"ID":"202404171640","Name":"sys","Code":""}', N'{"Message":"Xóa thành công","StatusCode":"OK"}', N'OK', N'sys', CAST(N'2024-04-17T16:40:22.020' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'df5d9c41-4867-49bc-af85-5a440c2dacad', N'{"ID":"445451ad-f6cf-4d95-8e80-870f2e9577a1","CodePackage":"001222","NamePackage":"t22523","TypePackage":"","PricePackage":"60.000","Decription":"","CreatedBy":"admin","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Thêm mới thành công","StatusCode":"OK"}', N'OK', NULL, CAST(N'2024-04-16T13:55:35.130' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'9ac6675e-b735-431e-954e-63b93b808ee7', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"7536da61-a845-4909-a3af-5dd5b8da6aa6","CreatedBy":"sys"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T14:39:38.817' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'cf47c30d-bb44-4607-8e11-6686675e778f', N'{"ID":"542247ee-fa05-4eca-b676-51134622d4e6","CodePackage":"20240417164022","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"","CreatedDate":"","UpdatedBy":"sys","UpdatedDate":""}', N'{"Message":"Không tìm thấy gói cước","StatusCode":"NotFound"}', N'NotFound', N'sys', CAST(N'2024-04-17T16:40:22.077' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'ad8a3d26-89e3-4ffd-bbd2-66e6beb0d008', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"7536da61-a845-4909-a3af-5dd5b8da6aa6","CreatedBy":"sys"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T16:40:21.860' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'f2c0ba29-ec83-4dad-bf02-67b425ce78c9', N'{"CusId":"e2dded95-504d-4837-a2b2-f4e2f4a21f39","PackageId":"524dbd9b-864c-4db5-8cbf-016b2168c9ce","CreatedBy":"sys"}', N'{"Message":"Không tìm thấy gói cước đăng ký bạn đăng ký","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T16:40:21.967' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'c9e3c494-ec53-426b-9b33-68badc4a76ed', N'{"ID":"2d23ef9b-bdb9-4ccf-94b7-ff3ad64382eb","CodePackage":"PK002","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"sys","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Mã gói cước đã tồn tại","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T16:40:22.000' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'40151470-6858-4a23-b96c-6a54a489c09f', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"524dbd9b-864c-4db5-8cbf-016b2168c9ce","CreatedBy":"hoanlv"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'hoanlv', CAST(N'2024-04-22T09:11:09.790' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'9140605f-c191-4581-96d4-6c97a9d9a3a8', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"7536da61-a845-4909-a3af-5dd5b8da6aa6","CreatedBy":"sys"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-22T09:12:14.317' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'5669db34-e91b-4924-98fa-7010b06d06d1', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"524dbd9b-864c-4db5-8cbf-016b2168c9ce","CreatedBy":"sys"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T16:40:21.933' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'fe2e4d83-7dde-4b79-b1e1-75d6974bb14c', N'{"ID":"202404171449","CodePackage":"20240417144928","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"sys","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Thêm mới thành công","StatusCode":"OK"}', N'OK', N'sys', CAST(N'2024-04-17T14:49:28.370' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'0b5749a7-2697-481b-a164-765dcf5fc97b', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"62979634-8a6f-4ab0-a6d8-c2f571b9909b","CreatedBy":"sys"}', N'{"Message":"Không tìm thấy gói cước đăng ký bạn đăng ký","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T13:39:02.927' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'aa4538a9-4cb9-4966-9f9b-7be9ece58555', N'{"ID":"202404171356","CodePackage":"20240417135605","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"sys","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Thêm mới thành công","StatusCode":"OK"}', N'OK', N'sys', CAST(N'2024-04-17T13:56:05.393' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'ce534c99-9e17-4990-98a7-7e2f7f7ab494', N'{"ID":"2024041713","Name":"sys","Code":""}', N'{"Message":"Không tìm thấy gói cước","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T13:21:56.623' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'd80e3991-625c-496e-a400-7e48ed01cbd2', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"524dbd9b-864c-4db5-8cbf-016b2168c9ce","CreatedBy":"sys"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T13:32:17.290' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'9890743e-f066-470d-ab97-83175b602e29', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"7536da61-a845-4909-a3af-5dd5b8da6aa6","CreatedBy":"sys"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T14:39:56.103' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'00758df2-a157-41f7-abc5-8688a605b2ba', N'{"ID":"202404220912","CodePackage":"20240422091214","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"sys","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Thêm mới thành công","StatusCode":"OK"}', N'OK', N'sys', CAST(N'2024-04-22T09:12:14.433' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'3c7a7567-c3df-485c-b4bf-89d8aa690025', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"7536da61-a845-4909-a3af-5dd5b8da6aa6","CreatedBy":"sys"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T14:41:57.080' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'5ba160c8-6b78-4b6b-81b9-8bc210fb067e', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77872BD","PackageId":"002","CreatedBy":"admin"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'admin', CAST(N'2024-04-16T15:36:16.247' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'92150eb1-0cd9-47ae-a234-8cb776a9d7c7', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"524dbd9b-864c-4db5-8cbf-016b2168c9ce","CreatedBy":"sys"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T14:39:56.137' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'2db6016f-d751-4fd3-9551-8d0fd4292c31', N'{"ID":"7ea9cb38-89db-4634-9b4e-d3fe31077cc2","Name":"admin","Code":""}', N'{"Message":"Xóa thành công","StatusCode":"OK"}', N'OK', N'admin', CAST(N'2024-04-16T14:02:21.103' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'1a7cce92-520d-4b6d-8d74-8f5ed275a951', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"524dbd9b-864c-4db5-8cbf-016b2168c9ce","CreatedBy":"sys"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T14:41:15.797' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'3bfb0168-bd9c-4b9f-a6c3-935f2df5160f', N'{"ID":"8dff9120-8d4a-41b7-af3c-d5af5362029b","CodePackage":"PK002","NamePackage":"3333","TypePackage":"","PricePackage":"60000","Decription":"","CreatedBy":"hoanlv","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Mã gói cước đã tồn tại","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'hoanlv', CAST(N'2024-04-22T09:09:54.703' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'79bfe15c-a63f-4e34-bb3d-9586b9298ccd', N'{"ID":"2024041713","CodePackage":"20240417134829","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"sys","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Thêm mới thành công","StatusCode":"OK"}', N'OK', N'sys', CAST(N'2024-04-17T13:48:29.827' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'd94e5fd0-a07c-4fcd-9d0a-9ae4894c58b7', N'{"ID":"51fe0cac-48fb-4063-a7dc-eee29b95a377","CodePackage":"PK0021","NamePackage":"Gói 21","TypePackage":"","PricePackage":"35.000","Decription":"","CreatedBy":"","CreatedDate":"","UpdatedBy":"hoanlv","UpdatedDate":""}', N'{"Message":"Cập nhật thành công","StatusCode":"OK"}', N'OK', N'hoanlv', CAST(N'2024-04-22T09:10:57.573' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'97511617-15ec-4cb0-8d1c-9b217200ee75', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77872BD","PackageId":"002","CreatedBy":"admin"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'admin', CAST(N'2024-04-16T15:36:20.150' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'fc408fce-5176-4897-8d14-9bce1d79e06c', N'{"CusId":"e2dded95-504d-4837-a2b2-f4e2f4a21f39","PackageId":"524dbd9b-864c-4db5-8cbf-016b2168c9ce","CreatedBy":"sys"}', N'{"Message":"Không tìm thấy gói cước đăng ký bạn đăng ký","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T14:39:39.153' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'e58f19b2-8d29-46bd-83d9-9c7c469da837', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"524dbd9b-864c-4db5-8cbf-016b2168c9ce","CreatedBy":"sys"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T14:49:22.147' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'5ccec887-65e5-400f-962a-9ca0223902e2', N'{"CusId":"e2dded95-504d-4837-a2b2-f4e2f4a21f39","PackageId":"524dbd9b-864c-4db5-8cbf-016b2168c9ce","CreatedBy":"sys"}', N'{"Message":"Không tìm thấy gói cước đăng ký bạn đăng ký","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T14:39:56.170' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'072bcbcc-e1b4-4d3f-9d68-9e33ab3ea787', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"26f4cbd7-b34d-4ed2-a6aa-414c5a64e336","CreatedBy":"sys"}', N'{"Message":"Không tìm thấy gói cước đăng ký bạn đăng ký","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T16:40:21.957' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'277b7b46-947c-4530-9f0b-9e6917471663', N'{"ID":"2249af70-d084-4f49-9f9c-c4690a03d76f","CodePackage":"PK002","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"sys","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Mã gói cước đã tồn tại","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T13:39:40.050' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'd6045d8c-24dd-428e-aa81-a0655dd31b4b', N'{"ID":"7cc44ba7-d2c1-4a50-8ac5-e059abeee97c","CodePackage":"20240422091327","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"","CreatedDate":"","UpdatedBy":"sys","UpdatedDate":""}', N'{"Message":"Không tìm thấy gói cước","StatusCode":"NotFound"}', N'NotFound', N'sys', CAST(N'2024-04-22T09:13:27.813' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'bfadd522-41e6-4b1e-a1d7-a170f683df85', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"7536da61-a845-4909-a3af-5dd5b8da6aa6","CreatedBy":"sys"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T14:49:28.273' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'aec3a61a-025c-4f49-bbe0-a3b6bb857f71', N'{"ID":"002","CodePackage":"PK002","NamePackage":"Gói cước 23","TypePackage":"","PricePackage":"50.000","Decription":"","CreatedBy":"","CreatedDate":"","UpdatedBy":"admin","UpdatedDate":""}', N'{"Message":"Cập nhật thành công","StatusCode":"OK"}', N'OK', N'admin', CAST(N'2024-04-17T13:21:56.727' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'ec027513-fe20-42f1-b71d-a3bc617a1d42', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"7536da61-a845-4909-a3af-5dd5b8da6aa6","CreatedBy":"sys"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T13:32:08.523' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'332ce71a-cfb2-4f03-9672-a421485649fa', N'{"CusId":"e2dded95-504d-4837-a2b2-f4e2f4a21f39","PackageId":"524dbd9b-864c-4db5-8cbf-016b2168c9ce","CreatedBy":"sys"}', N'{"Message":"Không tìm thấy gói cước đăng ký bạn đăng ký","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-22T09:13:27.707' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'b1fc6204-2b4b-4058-a922-a6c85548de2e', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"524dbd9b-864c-4db5-8cbf-016b2168c9ce","CreatedBy":"sys"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T14:41:58.927' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'e9c69e3b-516d-40a5-b529-a94404704721', N'{"ID":"202404171449","Name":"sys","Code":""}', N'{"Message":"Xóa thành công","StatusCode":"OK"}', N'OK', N'sys', CAST(N'2024-04-17T14:49:28.380' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'd1eaf6b0-acd1-4e0d-8751-aa05e7f32b96', N'{"ID":"002","CodePackage":"PK002","NamePackage":"Gói cước 23","TypePackage":"","PricePackage":"50.000","Decription":"","CreatedBy":"","CreatedDate":"","UpdatedBy":"admin","UpdatedDate":""}', N'{"Message":"Cập nhật thành công","StatusCode":"OK"}', N'OK', N'admin', CAST(N'2024-04-22T09:16:32.917' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'50d84e4b-b0e4-4188-8fce-accf55aa87f5', N'{"ID":"002","CodePackage":"PK002","NamePackage":"Gói cước 23","TypePackage":"","PricePackage":"50.000","Decription":"","CreatedBy":"","CreatedDate":"","UpdatedBy":"admin","UpdatedDate":""}', N'{"Message":"Cập nhật thành công","StatusCode":"OK"}', N'OK', N'admin', CAST(N'2024-04-17T13:56:05.460' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'8433d07c-3638-428d-b833-add228153404', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"7536da61-a845-4909-a3af-5dd5b8da6aa6","CreatedBy":"sys"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T14:40:48.997' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'a545804d-6e95-471a-8407-af689399d61d', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"524dbd9b-864c-4db5-8cbf-016b2168c9ce","CreatedBy":"sys"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-22T09:13:27.680' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'6407038f-d414-40db-b8f1-b71923f3c0e8', N'{"ID":"202736ad-ff67-418f-97b4-6c86a3f54bf0","CodePackage":"2024041713","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"sys","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Mã gói cước đã tồn tại","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T13:41:06.780' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'92fa9b98-35a6-43d9-bd70-bb637d6a19bb', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"4166b8e8-a77a-46e2-8908-54ef62c1ffbc","CreatedBy":"sys"}', N'{"Message":"Không tìm thấy gói cước đăng ký bạn đăng ký","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T14:49:22.167' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'c6d82355-e840-4014-996f-bccc0921b660', N'{"ID":"5266449b-6082-429c-be2d-8f06630f532d","CodePackage":"20240422091214","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"","CreatedDate":"","UpdatedBy":"sys","UpdatedDate":""}', N'{"Message":"Không tìm thấy gói cước","StatusCode":"NotFound"}', N'NotFound', N'sys', CAST(N'2024-04-22T09:12:14.517' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'0a56de4a-81af-4ed8-b320-c0429fae7087', N'{"ID":"2024041713","Name":"sys","Code":""}', N'{"Message":"Không tìm thấy gói cước","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T13:55:03.310' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'f38c1466-7a37-45e7-afc5-c224cb0f8378', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77872BD","PackageId":"002","CreatedBy":"admin"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'admin', CAST(N'2024-04-16T15:36:57.510' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'79ccb71d-4741-4725-9949-c86a721d4613', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"ff0f57ec-73cb-45a4-a912-2d04b5e0e19c","CreatedBy":"sys"}', N'{"Message":"Không tìm thấy gói cước đăng ký bạn đăng ký","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T14:49:28.320' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'70fc132d-e2a0-4627-8d1d-c9020ecac86b', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"7536da61-a845-4909-a3af-5dd5b8da6aa6","CreatedBy":"sys"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T14:49:22.113' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'0099e8d3-fc68-4c0a-a541-ca40cbeb5f7f', N'{"ID":"c7b9f891-12ab-44b6-a820-7e313f8a851a","CodePackage":"20240417144928","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"","CreatedDate":"","UpdatedBy":"sys","UpdatedDate":""}', N'{"Message":"Không tìm thấy gói cước","StatusCode":"NotFound"}', N'NotFound', N'sys', CAST(N'2024-04-17T14:49:28.433' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'5a0d67d1-4c6e-4e2f-b28e-cc11ce757e23', N'{"ID":"202404220913","Name":"sys","Code":""}', N'{"Message":"Xóa thành công","StatusCode":"OK"}', N'OK', N'sys', CAST(N'2024-04-22T09:13:27.763' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'9d085458-f564-4610-b1e5-cd8dca8c0243', N'{"ID":"002","CodePackage":"PK002","NamePackage":"Gói cước 23","TypePackage":"","PricePackage":"50.000","Decription":"","CreatedBy":"","CreatedDate":"","UpdatedBy":"admin","UpdatedDate":""}', N'{"Message":"Cập nhật thành công","StatusCode":"OK"}', N'OK', N'admin', CAST(N'2024-04-22T09:13:27.823' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'316f339c-8d91-4703-a59d-ced60371adcc', N'{"ID":"51fe0cac-48fb-4063-a7dc-eee29b95a377","CodePackage":"PK0021","NamePackage":"Gói 21","TypePackage":"","PricePackage":"35.000","Decription":"","CreatedBy":"hoanlv","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Thêm mới thành công","StatusCode":"OK"}', N'OK', N'hoanlv', CAST(N'2024-04-22T09:10:09.957' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'3699709f-fdf0-480f-bf7b-cf181e9f0dd9', N'{"ID":"202404220912","Name":"sys","Code":""}', N'{"Message":"Xóa thành công","StatusCode":"OK"}', N'OK', N'sys', CAST(N'2024-04-22T09:12:14.447' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'1daa33eb-b070-4ff1-9972-d22e8eaf9c63', N'{"ID":"2c8c572e-dd44-4edd-a34a-a224df66c093","CodePackage":"PK002","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"sys","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Mã gói cước đã tồn tại","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T14:39:56.210' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'b788eda7-6125-45fe-8ecd-d3a52874cd0b', N'{"ID":"de315e32-609a-4a76-99eb-bd3ec0167073","CodePackage":"001222","NamePackage":"Gói cước 200","TypePackage":"","PricePackage":"60.000","Decription":"","CreatedBy":"","CreatedDate":"","UpdatedBy":"admin","UpdatedDate":""}', N'{"Message":"Cập nhật thành công","StatusCode":"OK"}', N'OK', N'', CAST(N'2024-04-16T14:00:13.700' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'6c3b8979-c169-49ac-9997-d53b457c0936', N'{"ID":"2024041713","Name":"sys","Code":""}', N'{"Message":"Không tìm thấy gói cước","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T13:39:41.203' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'73cea8aa-0657-4b8a-986d-dcc6b933bf92', N'{"ID":"79d230ce-0c2d-41fd-833a-8f88a555ab9d","CodePackage":"20240417143956","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"","CreatedDate":"","UpdatedBy":"sys","UpdatedDate":""}', N'{"Message":"Không tìm thấy gói cước","StatusCode":"NotFound"}', N'NotFound', N'sys', CAST(N'2024-04-17T14:39:56.343' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'996b544d-f221-4e37-9d72-ddd0c29af52a', N'{"ID":"63375065-8cbf-4bae-a1f4-51f21781917e","CodePackage":"PK002","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"sys","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Mã gói cước đã tồn tại","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T13:56:05.360' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'f73bbeaa-8358-4665-8739-dddf7e0bfbdf', N'{"ID":"5cef0438-7898-4aa3-b0a6-5ad72d620d92","CodePackage":"PK002","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"sys","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Mã gói cước đã tồn tại","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T13:21:55.697' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'7d11c7a7-efef-430b-ba84-e4eface86c4c', N'{"ID":"002","CodePackage":"PK002","NamePackage":"Gói cước 23","TypePackage":"","PricePackage":"50000","Decription":"","CreatedBy":"","CreatedDate":"","UpdatedBy":"admin","UpdatedDate":""}', N'{"Message":"Cập nhật thành công","StatusCode":"OK"}', N'OK', N'admin', CAST(N'2024-04-16T15:30:49.810' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'1a7db6d9-32ae-4f31-aa68-e51889bc5500', N'{"ID":"002","CodePackage":"PK002","NamePackage":"Gói cước 23","TypePackage":"","PricePackage":"50.000","Decription":"","CreatedBy":"","CreatedDate":"","UpdatedBy":"admin","UpdatedDate":""}', N'{"Message":"Cập nhật thành công","StatusCode":"OK"}', N'OK', N'admin', CAST(N'2024-04-17T13:55:03.423' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'203efa62-9282-4a67-a5ac-e70dcded27ee', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"feba790c-19d9-487b-81b7-277175cbeb8a","CreatedBy":"sys"}', N'{"Message":"Không tìm thấy gói cước đăng ký bạn đăng ký","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T13:31:31.887' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'a33d39b2-f626-4532-aeea-e8b9261ce6ae', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"dc7733c9-0569-4d1d-a848-8270c405deb6","CreatedBy":"sys"}', N'{"Message":"Không tìm thấy gói cước đăng ký bạn đăng ký","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T14:39:56.163' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'3bb07a65-d1a9-46f6-8823-ecc44f215150', N'{"ID":"847f2aa5-af67-457a-8cec-bbbb11bf6ab8","CodePackage":"2024041713","NamePackage":"Test","TypePackage":"","PricePackage":"1.000","Decription":"","CreatedBy":"sys","CreatedDate":"","UpdatedBy":"","UpdatedDate":""}', N'{"Message":"Mã gói cước đã tồn tại","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T13:39:41.170' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'2f1564c2-30c6-44b8-b898-ed8ed48259c3', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"7536da61-a845-4909-a3af-5dd5b8da6aa6","CreatedBy":"sys"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-22T09:13:27.647' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'dfe286d8-75f6-4b33-8567-ef2ded2a219d', N'{"ID":"2024041713","Name":"sys","Code":""}', N'{"Message":"Xóa thành công","StatusCode":"OK"}', N'OK', N'sys', CAST(N'2024-04-17T13:48:40.347' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'c2cb9fe6-7a3b-4c8c-b964-f3f2c587a4e8', N'{"CusId":"e2dded95-504d-4837-a2b2-f4e2f4a21f39","PackageId":"524dbd9b-864c-4db5-8cbf-016b2168c9ce","CreatedBy":"sys"}', N'{"Message":"Không tìm thấy gói cước đăng ký bạn đăng ký","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-22T09:12:14.383' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'227dab7a-9b36-43a9-9cdc-f42c52158d91', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"524dbd9b-864c-4db5-8cbf-016b2168c9ce","CreatedBy":"sys"}', N'{"Message":"Không tìm thấy gói cước đăng ký bạn đăng ký","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T13:21:53.223' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'e35b4db7-322b-450f-9722-f43cef46d9d9', N'{"CusId":"e2dded95-504d-4837-a2b2-f4e2f4a21f39","PackageId":"524dbd9b-864c-4db5-8cbf-016b2168c9ce","CreatedBy":"sys"}', N'{"Message":"Không tìm thấy gói cước đăng ký bạn đăng ký","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T14:49:22.173' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'43dfa347-35a0-4e9d-a636-f576a078b5b8', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77872BD","PackageId":"7536da61-a845-4909-a3af-5dd5b8da6aa6","CreatedBy":"admin"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'admin', CAST(N'2024-04-16T15:06:07.870' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'14d87b70-9486-4b4c-8b7d-f5d0eb35b99f', N'{"ID":"002","CodePackage":"PK002","NamePackage":"Gói cước 23","TypePackage":"","PricePackage":"50.000","Decription":"","CreatedBy":"","CreatedDate":"","UpdatedBy":"admin","UpdatedDate":""}', N'{"Message":"Cập nhật thành công","StatusCode":"OK"}', N'OK', N'admin', CAST(N'2024-04-17T14:49:28.443' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'b8ad40d3-e768-4859-aff1-f6fe3c9651a0', N'{"ID":"002","CodePackage":"PK002","NamePackage":"Gói cước 23","TypePackage":"","PricePackage":"50.000","Decription":"","CreatedBy":"","CreatedDate":"","UpdatedBy":"admin","UpdatedDate":""}', N'{"Message":"Cập nhật thành công","StatusCode":"OK"}', N'OK', N'admin', CAST(N'2024-04-17T14:39:56.350' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'7c0ffac3-7469-4733-9fc8-f80f7f984e9c', N'{"CusId":"3020857E-5A27-47A1-B474-19D1B77822BD","PackageId":"7536da61-a845-4909-a3af-5dd5b8da6aa6","CreatedBy":"sys"}', N'{"Message":"Bạn đã đăng ký gói cước này","StatusCode":"AlreadyExists"}', N'AlreadyExists', N'sys', CAST(N'2024-04-17T13:21:52.880' AS DateTime))
+GO
+INSERT [dbo].[LogRequest] ([ID], [ModelRequest], [ModelResponse], [StatusCode], [CreateBy], [CreatedDate]) VALUES (N'3ff3d424-f81b-4e89-808c-fcc72a0b2ad5', N'{"ID":"002","CodePackage":"PK002","NamePackage":"Gói cước 23","TypePackage":"","PricePackage":"50.000","Decription":"","CreatedBy":"","CreatedDate":"","UpdatedBy":"admin","UpdatedDate":""}', N'{"Message":"Cập nhật thành công","StatusCode":"OK"}', N'OK', N'admin', CAST(N'2024-04-22T09:12:14.527' AS DateTime))
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'009a84ab-c4c7-4087-9e17-26f09002cae7', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'7536da61-a845-4909-a3af-5dd5b8da6aa6', N'hoanlv', N'Gói cước 1Gb/ngày', N'Add', N'90.000', N'hoanlv', CAST(N'2024-04-16T11:16:50.000' AS DateTime), N'hoanlv', CAST(N'2024-04-16T11:16:50.000' AS DateTime), 0, N'')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'01eaa4c5-b752-4899-a32a-4e0b90d4afb6', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'sys', N'Gói đăng ký mạng 30k', N'Add', N'30.000', N'sys', CAST(N'2024-04-22T09:12:14.353' AS DateTime), N'sys', CAST(N'2024-04-22T09:12:14.353' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'01fb6d4a-37ed-4c74-8dfc-229855061931', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'dc7733c9-0569-4d1d-a848-8270c405deb6', N'sys', N'', N'Cancel', N'', N'sys', CAST(N'2024-04-17T14:39:56.163' AS DateTime), N'sys', CAST(N'2024-04-17T14:39:56.163' AS DateTime), 0, N'Không tìm thấy gói cước đăng ký bạn đăng ký')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'06dca4c0-9ef8-4366-932f-c7e48a8778ed', N'3020857E-5A27-47A1-B474-19D1B77872BD', N'002', N'admin', N'Gói cước 23', N'Add', N'50000', N'admin', CAST(N'2024-04-16T13:07:41.043' AS DateTime), N'admin', CAST(N'2024-04-16T13:07:41.043' AS DateTime), 0, N'')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'0c4c421f-2dca-470f-9304-b3827779c3a2', N'91e4abdc-c293-4d7d-89ac-a622268651b9', N'', N'hoanlv', N'Gói đăng ký mạng 30k', N'Cancel', N'30.000', N'hoanlv', CAST(N'2024-04-16T11:17:17.000' AS DateTime), N'hoanlv', CAST(N'2024-04-16T11:17:17.000' AS DateTime), 0, N'')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'0c877589-d296-41b9-b19f-440efd8efc57', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'7536da61-a845-4909-a3af-5dd5b8da6aa6', N'sys', N'Gói cước 1Gb/ngày', N'Add', N'90.000', N'sys', CAST(N'2024-04-22T09:12:14.317' AS DateTime), N'sys', CAST(N'2024-04-22T09:12:14.317' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'0f2b8cc4-d867-4d45-a003-66d29494b563', N'46e60822-90d2-4c0a-ab1f-88beb8e4d40d', N'', N'admin', N'test2222', N'Cancel', N'25252522', N'admin', CAST(N'2024-04-15T17:22:06.000' AS DateTime), N'admin', CAST(N'2024-04-15T17:22:06.000' AS DateTime), 0, N'')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'0fb00211-bdb6-4554-b973-96befcb16bf8', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'sys', N'Gói đăng ký mạng 30k', N'Add', N'30.000', N'sys', CAST(N'2024-04-17T14:41:58.927' AS DateTime), N'sys', CAST(N'2024-04-17T14:41:58.927' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'112b0e78-5a30-4b7a-adfb-4df385521f03', N'e2dded95-504d-4837-a2b2-f4e2f4a21f39', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'sys', N'', N'Cancel', N'', N'sys', CAST(N'2024-04-17T14:39:39.153' AS DateTime), N'sys', CAST(N'2024-04-17T14:39:39.153' AS DateTime), 0, N'Không tìm thấy gói cước đăng ký bạn đăng ký')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'1667a78c-2e1b-43dc-a736-8e95e23b4b3a', N'3020857E-5A27-47A1-B474-19D1B77872BD', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'admin', N'Gói đăng ký mạng 30k', N'Add', N'30.000', N'admin', CAST(N'2024-04-15T17:35:20.000' AS DateTime), N'admin', CAST(N'2024-04-15T17:35:20.000' AS DateTime), 0, N'')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'18bfe539-4b5d-417e-961f-4880f9207a00', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'hoanlv', N'Gói đăng ký mạng 30k', N'Add', N'30.000', N'hoanlv', CAST(N'2024-04-16T11:16:41.000' AS DateTime), N'hoanlv', CAST(N'2024-04-16T11:16:41.000' AS DateTime), 0, N'')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'19b209c9-2cfe-43e4-9178-7e4222cd0d3b', N'e2dded95-504d-4837-a2b2-f4e2f4a21f39', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'sys', N'', N'Cancel', N'', N'sys', CAST(N'2024-04-17T14:39:56.170' AS DateTime), N'sys', CAST(N'2024-04-17T14:39:56.170' AS DateTime), 0, N'Không tìm thấy gói cước đăng ký bạn đăng ký')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'1d3efddb-e360-4d75-9aee-5c76264bd3ed', N'3020857E-5A27-47A1-B474-19D1B77872BD', N'002', N'admin', N'Gói cước 23', N'Add', N'50000', N'admin', CAST(N'2024-04-16T15:36:57.493' AS DateTime), N'admin', CAST(N'2024-04-16T15:36:57.493' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'2216097e-4203-4920-9048-3ff92ae03a34', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'7536da61-a845-4909-a3af-5dd5b8da6aa6', N'sys', N'Gói cước 1Gb/ngày', N'Add', N'90.000', N'sys', CAST(N'2024-04-17T14:39:38.793' AS DateTime), N'sys', CAST(N'2024-04-17T14:39:38.793' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'28da636b-6997-4114-815f-51d09f9d3568', N'3020857E-5A27-47A1-B474-19D1B77872BD', N'7ea9cb38-89db-4634-9b4e-d3fe31077cc2', N'admin', N'Gói cước data', N'Add', N'50000', N'admin', CAST(N'2024-04-15T17:25:08.000' AS DateTime), N'admin', CAST(N'2024-04-15T17:25:08.000' AS DateTime), 0, N'')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'2c3377b9-28ae-4e40-9f7c-a2daddc5ff29', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'sys', N'Gói đăng ký mạng 30k', N'Add', N'30.000', N'sys', CAST(N'2024-04-22T09:13:27.677' AS DateTime), N'sys', CAST(N'2024-04-22T09:13:27.677' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'2ccb644c-b2ad-4a0f-b5d0-2baeeb9d5c5b', N'3020857E-5A27-47A1-B474-19D1B77872BD', N'7536da61-a845-4909-a3af-5dd5b8da6aa6', N'admin', N'Gói cước 1Gb/ngày', N'Add', N'90.000', N'admin', CAST(N'2024-04-16T11:07:19.000' AS DateTime), N'admin', CAST(N'2024-04-16T11:07:19.000' AS DateTime), 0, N'')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'34333f6b-192b-40e0-9313-d920753bd07e', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'26f4cbd7-b34d-4ed2-a6aa-414c5a64e336', N'sys', N'', N'Cancel', N'', N'sys', CAST(N'2024-04-17T16:40:21.957' AS DateTime), N'sys', CAST(N'2024-04-17T16:40:21.957' AS DateTime), 0, N'Không tìm thấy gói cước đăng ký bạn đăng ký')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'3622d7df-208d-4998-81be-3a9b35403452', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'da45eae4-535c-4388-b75f-003304956135', N'sys', N'', N'Cancel', N'', N'sys', CAST(N'2024-04-22T09:13:27.697' AS DateTime), N'sys', CAST(N'2024-04-22T09:13:27.697' AS DateTime), 0, N'Không tìm thấy gói cước đăng ký bạn đăng ký')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'38d5c51e-8a1b-4075-b072-8a7e12c0e4a0', N'e2dded95-504d-4837-a2b2-f4e2f4a21f39', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'sys', N'Gói đăng ký mạng 30k', N'Cancel', N'30.000', N'sys', CAST(N'2024-04-17T13:39:02.977' AS DateTime), N'sys', CAST(N'2024-04-17T13:39:02.977' AS DateTime), 0, N'')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'4220afba-6d2c-45e8-85c3-2c061059786a', N'e2dded95-504d-4837-a2b2-f4e2f4a21f39', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'sys', N'', N'Cancel', N'', N'sys', CAST(N'2024-04-17T16:40:21.967' AS DateTime), N'sys', CAST(N'2024-04-17T16:40:21.967' AS DateTime), 0, N'Không tìm thấy gói cước đăng ký bạn đăng ký')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'467304ab-ecf0-4372-b698-c1a4e6f1df55', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'sys', N'Gói đăng ký mạng 30k', N'Add', N'30.000', N'sys', CAST(N'2024-04-17T14:49:22.147' AS DateTime), N'sys', CAST(N'2024-04-17T14:49:22.147' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'48ca81d0-4e25-481a-8271-1620eeedc59e', N'3020857E-5A27-47A1-B474-19D1B77872BD', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'admin', N'test2222', N'Add', N'25252522', N'admin', CAST(N'2024-04-15T16:20:46.000' AS DateTime), N'admin', CAST(N'2024-04-15T16:20:46.000' AS DateTime), 0, N'')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'4b083173-d378-460a-92de-de363110b922', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'7536da61-a845-4909-a3af-5dd5b8da6aa6', N'sys', N'Gói cước 1Gb/ngày', N'Add', N'90.000', N'sys', CAST(N'2024-04-17T14:49:28.273' AS DateTime), N'sys', CAST(N'2024-04-17T14:49:28.273' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'4bb3fe4c-c93e-46f6-af3f-24b3451eb9db', N'3020857E-5A27-47A1-B474-19D1B77872BD', N'7ea9cb38-89db-4634-9b4e-d3fe31077cc2', N'admin', N'Gói cước data', N'Add', N'50000', N'admin', CAST(N'2024-04-16T13:06:47.980' AS DateTime), N'admin', CAST(N'2024-04-16T13:06:47.980' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'4f31c026-c5ad-4771-91a4-dae2afcda604', N'3020857E-5A27-47A1-B474-19D1B77872BD', N'002', N'admin', N'Gói cước 23', N'Add', N'50000', N'admin', CAST(N'2024-04-16T15:36:16.230' AS DateTime), N'admin', CAST(N'2024-04-16T15:36:16.230' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'4ff3620a-ea7f-4151-bb34-318475775ad8', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'7536da61-a845-4909-a3af-5dd5b8da6aa6', N'sys', N'Gói cước 1Gb/ngày', N'Add', N'90.000', N'sys', CAST(N'2024-04-17T14:40:48.993' AS DateTime), N'sys', CAST(N'2024-04-17T14:40:48.993' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'53d2de6e-8b24-44e1-ae5c-cfcfb0422841', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'574a8d07-e113-4b04-8805-81e68c2bdb21', N'hoanlv', N'Gói 500M/24h', N'Add', N'2.000', N'hoanlv', CAST(N'2024-04-22T09:11:15.467' AS DateTime), N'hoanlv', CAST(N'2024-04-22T09:11:15.467' AS DateTime), 0, N'')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'5964ba4e-7efb-4352-bb48-1d6d6809e060', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'7536da61-a845-4909-a3af-5dd5b8da6aa6', N'sys', N'Gói cước 1Gb/ngày', N'Add', N'90.000', N'sys', CAST(N'2024-04-17T13:21:52.860' AS DateTime), N'sys', CAST(N'2024-04-17T13:21:52.860' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'5d0aecf4-4502-4798-8284-7de36529cf57', N'3020857E-5A27-47A1-B474-19D1B77872BD', N'002', N'admin', N'Gói cước 23', N'Add', N'50000', N'admin', CAST(N'2024-04-16T15:36:20.147' AS DateTime), N'admin', CAST(N'2024-04-16T15:36:20.147' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'62141926-a5ab-457f-9cf6-5790d39b97b3', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'7536da61-a845-4909-a3af-5dd5b8da6aa6', N'sys', N'Gói cước 1Gb/ngày', N'Add', N'90.000', N'sys', CAST(N'2024-04-17T13:32:08.520' AS DateTime), N'sys', CAST(N'2024-04-17T13:32:08.520' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'64694193-5a2d-417d-9060-3e4af57f79e6', N'cdfa73d6-26c9-4afe-bc71-36d901817fbe', N'', N'admin', N'Gói cước 23', N'Cancel', N'50000', N'admin', CAST(N'2024-04-15T17:35:27.000' AS DateTime), N'admin', CAST(N'2024-04-15T17:35:27.000' AS DateTime), 0, N'')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'6704b9f7-2278-42fb-a5fe-6413206c682f', N'3020857E-5A27-47A1-B474-19D1B77872BD', N'7ea9cb38-89db-4634-9b4e-d3fe31077cc2', N'admin', N'Gói cước data', N'Add', N'50000', N'admin', CAST(N'2024-04-16T13:07:22.440' AS DateTime), N'admin', CAST(N'2024-04-16T13:07:22.443' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'698640e6-defc-405f-aaf2-0a81108b4f7b', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'a989f159-3b3d-43f8-9be1-1567ef37b4d2', N'sys', N'', N'Cancel', N'', N'sys', CAST(N'2024-04-22T09:12:14.377' AS DateTime), N'sys', CAST(N'2024-04-22T09:12:14.377' AS DateTime), 0, N'Không tìm thấy gói cước đăng ký bạn đăng ký')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'7234cf8b-7a59-4f9d-b116-13df49d0b189', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'sys', N'', N'Cancel', N'', N'sys', CAST(N'2024-04-17T13:31:40.490' AS DateTime), N'sys', CAST(N'2024-04-17T13:31:40.490' AS DateTime), 0, N'Không tìm thấy gói cước đăng ký bạn đăng ký')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'7604c22a-c8a8-4cdb-82ad-bda192a07cae', N'3020857E-5A27-47A1-B474-19D1B77872BD', N'7536da61-a845-4909-a3af-5dd5b8da6aa6', N'admin', N'Gói cước 1Gb/ngày', N'Add', N'90.000', N'admin', CAST(N'2024-04-16T15:06:07.853' AS DateTime), N'admin', CAST(N'2024-04-16T15:06:07.853' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'7ff11f21-217a-4654-8f80-2e171bf67246', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'sys', N'Gói đăng ký mạng 30k', N'Add', N'30.000', N'sys', CAST(N'2024-04-17T13:32:17.287' AS DateTime), N'sys', CAST(N'2024-04-17T13:32:17.287' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'8666c488-cd74-4f9c-937c-04ba67023c06', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'62979634-8a6f-4ab0-a6d8-c2f571b9909b', N'sys', N'', N'Cancel', N'', N'sys', CAST(N'2024-04-17T13:39:02.927' AS DateTime), N'sys', CAST(N'2024-04-17T13:39:02.927' AS DateTime), 0, N'Không tìm thấy gói cước đăng ký bạn đăng ký')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'89916a2a-766e-42ad-b56b-76e6168a1adc', N'3020857E-5A27-47A1-B474-19D1B77872BD', N'574a8d07-e113-4b04-8805-81e68c2bdb21', N'admin', N'Gói 500M/24h', N'Add', N'2.000', N'admin', CAST(N'2024-04-16T09:06:21.000' AS DateTime), N'admin', CAST(N'2024-04-16T09:06:21.000' AS DateTime), 0, N'')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'8b2ba95e-7f82-4113-a20e-03c3f4c413d5', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'7536da61-a845-4909-a3af-5dd5b8da6aa6', N'sys', N'Gói cước 1Gb/ngày', N'Add', N'90.000', N'sys', CAST(N'2024-04-22T09:13:27.647' AS DateTime), N'sys', CAST(N'2024-04-22T09:13:27.647' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'8c538e7c-3489-46ff-b387-5028119716ec', N'e2dded95-504d-4837-a2b2-f4e2f4a21f39', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'sys', N'', N'Cancel', N'', N'sys', CAST(N'2024-04-17T14:49:22.173' AS DateTime), N'sys', CAST(N'2024-04-17T14:49:22.173' AS DateTime), 0, N'Không tìm thấy gói cước đăng ký bạn đăng ký')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'98f0a4cc-822d-44da-a5b2-ec2e03624cb9', N'7f84e2db-e3d4-4219-b5d5-c5047511b2d6', N'', N'admin', N'Gói 500M/24h', N'Cancel', N'2.000', N'admin', CAST(N'2024-04-16T09:07:02.000' AS DateTime), N'admin', CAST(N'2024-04-16T09:07:02.000' AS DateTime), 0, N'')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'99ce8985-6ba9-4424-a740-69ea42a278bf', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'54722dc0-fc0b-47b9-bef7-e6a243eb7baf', N'sys', N'', N'Cancel', N'', N'sys', CAST(N'2024-04-17T14:39:39.143' AS DateTime), N'sys', CAST(N'2024-04-17T14:39:39.143' AS DateTime), 0, N'Không tìm thấy gói cước đăng ký bạn đăng ký')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'9a4ebd21-4939-4d94-a234-016f63c5780d', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'sys', N'', N'Cancel', N'', N'sys', CAST(N'2024-04-17T13:21:53.223' AS DateTime), N'sys', CAST(N'2024-04-17T13:21:53.223' AS DateTime), 0, N'Không tìm thấy gói cước đăng ký bạn đăng ký')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'a2aa7fbf-956e-43be-a569-50a30ae4b975', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'sys', N'Gói đăng ký mạng 30k', N'Add', N'30.000', N'sys', CAST(N'2024-04-17T14:49:28.303' AS DateTime), N'sys', CAST(N'2024-04-17T14:49:28.303' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'a721f7fd-ff43-468f-996e-01ff3f98db03', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'sys', N'Gói đăng ký mạng 30k', N'Add', N'30.000', N'sys', CAST(N'2024-04-17T14:39:56.133' AS DateTime), N'sys', CAST(N'2024-04-17T14:39:56.133' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'a819015d-9723-4096-a0a9-a47d4eb33930', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'7536da61-a845-4909-a3af-5dd5b8da6aa6', N'sys', N'Gói cước 1Gb/ngày', N'Add', N'90.000', N'sys', CAST(N'2024-04-17T14:49:22.110' AS DateTime), N'sys', CAST(N'2024-04-17T14:49:22.110' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'b330d866-4636-42c5-be00-c5877b46457b', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'feba790c-19d9-487b-81b7-277175cbeb8a', N'sys', N'', N'Cancel', N'', N'sys', CAST(N'2024-04-17T13:31:31.887' AS DateTime), N'sys', CAST(N'2024-04-17T13:31:31.887' AS DateTime), 0, N'Không tìm thấy gói cước đăng ký bạn đăng ký')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'cbead8ed-e952-427d-bf9b-c6946824c997', N'e2dded95-504d-4837-a2b2-f4e2f4a21f39', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'sys', N'', N'Cancel', N'', N'sys', CAST(N'2024-04-22T09:12:14.383' AS DateTime), N'sys', CAST(N'2024-04-22T09:12:14.383' AS DateTime), 0, N'Không tìm thấy gói cước đăng ký bạn đăng ký')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'cc2e1e59-1fea-4249-b446-ad66a2d4bee9', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'sys', N'Gói đăng ký mạng 30k', N'Add', N'30.000', N'sys', CAST(N'2024-04-17T14:39:39.080' AS DateTime), N'sys', CAST(N'2024-04-17T14:39:39.080' AS DateTime), 0, N'')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'cd68cf8d-d9a8-4802-8514-f6c06b4e2488', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'7536da61-a845-4909-a3af-5dd5b8da6aa6', N'sys', N'Gói cước 1Gb/ngày', N'Add', N'90.000', N'sys', CAST(N'2024-04-17T16:40:21.857' AS DateTime), N'sys', CAST(N'2024-04-17T16:40:21.857' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'cdcac194-5e3e-461c-87f1-e30c5fff4b5b', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'hoanlv', N'Gói đăng ký mạng 30k', N'Add', N'30.000', N'hoanlv', CAST(N'2024-04-22T09:11:09.783' AS DateTime), N'hoanlv', CAST(N'2024-04-22T09:11:09.783' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'ced4c261-f29c-4209-a095-e166d65f1144', N'3020857E-5A27-47A1-B474-19D1B77872BD', N'7ea9cb38-89db-4634-9b4e-d3fe31077cc2', N'admin', N'Gói cước data', N'Add', N'50000', N'admin', CAST(N'2024-04-16T13:06:41.527' AS DateTime), N'admin', CAST(N'2024-04-16T13:06:41.527' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'd38d111e-a5cd-4867-9878-6314f77edd0f', N'e2dded95-504d-4837-a2b2-f4e2f4a21f39', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'sys', N'', N'Cancel', N'', N'sys', CAST(N'2024-04-17T14:49:28.330' AS DateTime), N'sys', CAST(N'2024-04-17T14:49:28.330' AS DateTime), 0, N'Không tìm thấy gói cước đăng ký bạn đăng ký')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'd3e7d3ce-65c7-4831-9f30-ab921f1b228d', N'e2dded95-504d-4837-a2b2-f4e2f4a21f39', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'sys', N'', N'Cancel', N'', N'sys', CAST(N'2024-04-22T09:13:27.707' AS DateTime), N'sys', CAST(N'2024-04-22T09:13:27.707' AS DateTime), 0, N'Không tìm thấy gói cước đăng ký bạn đăng ký')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'd6f2a81a-8cb3-41df-b595-fffe43a8261d', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'7536da61-a845-4909-a3af-5dd5b8da6aa6', N'sys', N'Gói cước 1Gb/ngày', N'Add', N'90.000', N'sys', CAST(N'2024-04-17T14:41:57.080' AS DateTime), N'sys', CAST(N'2024-04-17T14:41:57.080' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'd8a00100-9e0e-4fc2-89f7-b49f2c15e7c9', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'sys', N'Gói đăng ký mạng 30k', N'Add', N'30.000', N'sys', CAST(N'2024-04-17T13:21:53.187' AS DateTime), N'sys', CAST(N'2024-04-17T13:21:53.187' AS DateTime), 0, N'')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'e12c66a7-cf29-4d81-9cad-25bace81bd4c', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'sys', N'Gói đăng ký mạng 30k', N'Add', N'30.000', N'sys', CAST(N'2024-04-17T16:40:21.930' AS DateTime), N'sys', CAST(N'2024-04-17T16:40:21.930' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'e56b84d5-c64a-4821-aafa-e34f510c5068', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'4166b8e8-a77a-46e2-8908-54ef62c1ffbc', N'sys', N'', N'Cancel', N'', N'sys', CAST(N'2024-04-17T14:49:22.167' AS DateTime), N'sys', CAST(N'2024-04-17T14:49:22.167' AS DateTime), 0, N'Không tìm thấy gói cước đăng ký bạn đăng ký')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'e97ac509-2453-4d59-a972-aedbae814ce7', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'bb5f2439-040a-42cf-9794-851cc1c4f937', N'sys', N'', N'Cancel', N'', N'sys', CAST(N'2024-04-17T13:21:53.213' AS DateTime), N'sys', CAST(N'2024-04-17T13:21:53.213' AS DateTime), 0, N'Không tìm thấy gói cước đăng ký bạn đăng ký')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'ec62840e-8025-4c7a-beb2-dcd8da209f02', N'3020857E-5A27-47A1-B474-19D1B77872BD', N'002', N'admin', N'Gói cước 23', N'Add', N'50000', N'admin', CAST(N'2024-04-15T16:38:29.000' AS DateTime), N'admin', CAST(N'2024-04-15T16:38:29.000' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'eca2d578-dd2e-43ff-9971-7641f7c78d48', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'7536da61-a845-4909-a3af-5dd5b8da6aa6', N'sys', N'Gói cước 1Gb/ngày', N'Add', N'90.000', N'sys', CAST(N'2024-04-17T14:39:56.103' AS DateTime), N'sys', CAST(N'2024-04-17T14:39:56.103' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'fb2a1b3f-27bd-4f84-8fe7-7dade66f54a7', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'ff0f57ec-73cb-45a4-a912-2d04b5e0e19c', N'sys', N'', N'Cancel', N'', N'sys', CAST(N'2024-04-17T14:49:28.320' AS DateTime), N'sys', CAST(N'2024-04-17T14:49:28.320' AS DateTime), 0, N'Không tìm thấy gói cước đăng ký bạn đăng ký')
+GO
+INSERT [dbo].[MNG_HistoryTransaction] ([ID], [CustomerID], [PackageID], [FullName], [NamePackage], [TypeTransaction], [PricePackage], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted], [Decription]) VALUES (N'fb705aae-b3c0-49bd-a9a6-e487d0315d49', N'3020857E-5A27-47A1-B474-19D1B77822BD', N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'sys', N'Gói đăng ký mạng 30k', N'Add', N'30.000', N'sys', CAST(N'2024-04-17T14:41:15.797' AS DateTime), N'sys', CAST(N'2024-04-17T14:41:15.797' AS DateTime), 0, N'Bạn đã đăng ký gói cước này')
+GO
+INSERT [dbo].[MNG_Package] ([ID], [CodePackage], [NamePackage], [TypePackage], [PricePackage], [Decription], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'001', N'PK001', N'Gói cước 11', N'Viettel', N'332223333333', N'', N'admin', N'01/04/2024 10:03:02', N'admin', N'11/04/2024 15:39:56', 1)
+GO
+INSERT [dbo].[MNG_Package] ([ID], [CodePackage], [NamePackage], [TypePackage], [PricePackage], [Decription], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'002', N'PK002', N'Gói cước 23', N'Viettel', N'50.000', N'', N'admin', N'01/04/2024 12:03:02', N'admin', N'22/04/2024 09:16:32', 0)
+GO
+INSERT [dbo].[MNG_Package] ([ID], [CodePackage], [NamePackage], [TypePackage], [PricePackage], [Decription], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'025f0e5b-526c-4cba-8446-f7da9f445301', N'2024041713', N'Test', N'', N'1.000', N'', N'sys', N'17/04/2024 13:21:56', N'sys', N'17/04/2024 13:21:56', 0)
+GO
+INSERT [dbo].[MNG_Package] ([ID], [CodePackage], [NamePackage], [TypePackage], [PricePackage], [Decription], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'2024041713', N'20240417134829', N'Test', N'', N'1.000', N'', N'sys', N'17/04/2024 13:48:29', N'sys', N'17/04/2024 13:48:29', 1)
+GO
+INSERT [dbo].[MNG_Package] ([ID], [CodePackage], [NamePackage], [TypePackage], [PricePackage], [Decription], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'202404171356', N'20240417135605', N'Test', N'', N'1.000', N'', N'sys', N'17/04/2024 13:56:05', N'sys', N'17/04/2024 13:56:05', 1)
+GO
+INSERT [dbo].[MNG_Package] ([ID], [CodePackage], [NamePackage], [TypePackage], [PricePackage], [Decription], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'202404171439', N'20240417143956', N'Test', N'', N'1.000', N'', N'sys', N'17/04/2024 14:39:56', N'sys', N'17/04/2024 14:39:56', 1)
+GO
+INSERT [dbo].[MNG_Package] ([ID], [CodePackage], [NamePackage], [TypePackage], [PricePackage], [Decription], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'202404171449', N'20240417144928', N'Test', N'', N'1.000', N'', N'sys', N'17/04/2024 14:49:28', N'sys', N'17/04/2024 14:49:28', 1)
+GO
+INSERT [dbo].[MNG_Package] ([ID], [CodePackage], [NamePackage], [TypePackage], [PricePackage], [Decription], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'202404171640', N'20240417164022', N'Test', N'', N'1.000', N'', N'sys', N'17/04/2024 16:40:22', N'sys', N'17/04/2024 16:40:22', 1)
+GO
+INSERT [dbo].[MNG_Package] ([ID], [CodePackage], [NamePackage], [TypePackage], [PricePackage], [Decription], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'202404220912', N'20240422091214', N'Test', N'', N'1.000', N'', N'sys', N'22/04/2024 09:12:14', N'sys', N'22/04/2024 09:12:14', 1)
+GO
+INSERT [dbo].[MNG_Package] ([ID], [CodePackage], [NamePackage], [TypePackage], [PricePackage], [Decription], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'202404220913', N'20240422091327', N'Test', N'', N'1.000', N'', N'sys', N'22/04/2024 09:13:27', N'sys', N'22/04/2024 09:13:27', 1)
+GO
+INSERT [dbo].[MNG_Package] ([ID], [CodePackage], [NamePackage], [TypePackage], [PricePackage], [Decription], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'51fe0cac-48fb-4063-a7dc-eee29b95a377', N'PK0021', N'Gói 21', N'', N'35.000', N'', N'hoanlv', N'22/04/2024 09:10:09', N'hoanlv', N'22/04/2024 09:10:57', 0)
+GO
+INSERT [dbo].[MNG_Package] ([ID], [CodePackage], [NamePackage], [TypePackage], [PricePackage], [Decription], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'524dbd9b-864c-4db5-8cbf-016b2168c9ce', N'VT30K', N'Gói đăng ký mạng 30k', N'Viettel', N'30.000', N'', N'admin', N'11/04/2024 15:02:05', N'admin', N'15/04/2024 17:34:10', 0)
+GO
+INSERT [dbo].[MNG_Package] ([ID], [CodePackage], [NamePackage], [TypePackage], [PricePackage], [Decription], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'574a8d07-e113-4b04-8805-81e68c2bdb21', N'VD002', N'Gói 500M/24h', N'Viettel', N'2.000', N'', N'admin', N'15/04/2024 09:06:30', N'admin', N'15/04/2024 17:34:40', 0)
+GO
+INSERT [dbo].[MNG_Package] ([ID], [CodePackage], [NamePackage], [TypePackage], [PricePackage], [Decription], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'7536da61-a845-4909-a3af-5dd5b8da6aa6', N'VT90K', N'Gói cước 1Gb/ngày', N'Viettel', N'90.000', N'', N'admin', N'12/04/2024 09:43:57', N'admin', N'15/04/2024 17:35:15', 0)
+GO
+INSERT [dbo].[MNG_Package] ([ID], [CodePackage], [NamePackage], [TypePackage], [PricePackage], [Decription], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'7ea9cb38-89db-4634-9b4e-d3fe31077cc2', N'005', N'Gói cước data', N'Viettel', N'50000', N'', N'admin', N'15/04/2024 09:05:00', N'admin', N'15/04/2024 09:05:00', 1)
+GO
+INSERT [dbo].[MNG_Package] ([ID], [CodePackage], [NamePackage], [TypePackage], [PricePackage], [Decription], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'de315e32-609a-4a76-99eb-bd3ec0167073', N'001222', N'Gói cước 200', N'', N'60.000', N'', N'admin', N'16/04/2024 13:55:34', N'admin', N'16/04/2024 14:00:13', 0)
+GO
+INSERT [dbo].[MNG_Package] ([ID], [CodePackage], [NamePackage], [TypePackage], [PricePackage], [Decription], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'e23327b3-69a2-45b7-9673-2f949256b073', N'44', N'44', N'Viettel', N'44', N'', N'admin', N'12/04/2024 16:59:12', N'admin', N'12/04/2024 16:59:12', 1)
+GO
+INSERT [dbo].[MNG_Package] ([ID], [CodePackage], [NamePackage], [TypePackage], [PricePackage], [Decription], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [IsDeleted]) VALUES (N'f01cfc12-2e58-4bc7-bbdd-03800d0c7ff7', N'--', N'--', N'Viettel', N'==', N'', N'admin', N'11/04/2024 15:04:08', N'admin', N'11/04/2024 15:04:08', 1)
+GO
+ALTER TABLE [dbo].[Customer] ADD  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [dbo].[Customer_Package] ADD  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [dbo].[MNG_HistoryTransaction] ADD  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [dbo].[MNG_Package] ADD  DEFAULT ((0)) FOR [IsDeleted]
+GO
