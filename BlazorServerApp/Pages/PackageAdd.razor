@@ -1,0 +1,39 @@
+﻿@page "/packageadd"
+<h3>Thêm mới gói cước</h3>
+<a href="/packagedata">Danh sách gói</a>
+<hr />
+<EditForm Model="@packageRequest" OnSubmit=@AddPackage>
+    <DataAnnotationsValidator />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Mã gói</label>
+                <InputText id="CodePackage" class="form-control" placeholder="Mã gói"
+                           @bind-Value="packageRequest.CodePackage" />
+                <ValidationMessage For="()=>packageRequest.CodePackage"></ValidationMessage>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Tên gói</label>
+                <InputText id="NamePackage" class="form-control" placeholder="Tên gói"
+                           @bind-Value="packageRequest.NamePackage" />
+            </div>
+            <div class="form-g                                                                                                                                                                          roup mb-2">
+                <label for="exampleInputPassword1">Giá</label>
+                <InputText id="PricePackage" class="form-control" placeholder="Giá"
+                           @bind-Value="packageRequest.PricePackage" />
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+</EditForm>
+@code {
+    [CascadingParameter]
+    public EventCallback notify { get; set; }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await notify.InvokeAsync();
+        }
+    }
+}

@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Blazored.LocalStorage" Version="4.5.0" />
+    <PackageReference Include="Blazored.Toast" Version="4.2.0" />
+    <PackageReference Include="Google.Protobuf" Version="3.18.0" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.62.0" />
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.62.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.62.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.0" />
+    <PackageReference Include="Syncfusion.Blazor.Notifications" Version="25.1.35" />
+    <PackageReference Include="Syncfusion.Blazor.Themes" Version="25.1.35" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BlazorModel\BlazorModel.csproj" />
+    <ProjectReference Include="..\ManagementPackage\ManagementPackage.csproj" />
+    <ProjectReference Include="..\PackageSDK\PackageSDK.csproj" />
+  </ItemGroup>
+	<ItemGroup>
+		<Protobuf Include="Protos\MNGPackage.proto" GrpcServices="Client" />
+	</ItemGroup>
+
+</Project>

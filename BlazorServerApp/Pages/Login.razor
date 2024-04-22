@@ -1,0 +1,36 @@
+﻿@page "/login"
+
+<PageTitle>Login</PageTitle>
+
+<div class="col-md-6 offset-md-3 mt-5">
+    <div class="card">
+        <h4 class="card-header">Login</h4>
+        <div class="card-body">
+            <EditForm Model="@login" OnValidSubmit=LoginUser>
+                <DataAnnotationsValidator />
+                <div class="form-group">
+                    <label>Username</label>
+                    <InputText @bind-Value="login.UserName" class="form-control" />
+                    <ValidationMessage For="@(() => login.UserName)" />
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <InputText @bind-Value="login.PassWord" type="password" class="form-control" />
+                    <ValidationMessage For="@(() => login.PassWord)" />
+                </div>
+                <button class="btn btn-primary">
+                    @if (loading)
+                    {
+                        <span class="spinner-border spinner-border-sm mr-1"></span>
+                    }
+                    Login
+                </button>
+                @if (!string.IsNullOrEmpty(Error))
+                {
+                    <div class="alert alert-danger mt-3 mb-0">@Error</div>
+                }
+            </EditForm>
+        </div>
+    </div>
+</div>
+

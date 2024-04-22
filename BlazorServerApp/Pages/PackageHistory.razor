@@ -1,0 +1,89 @@
+﻿@page "/packagehistory"
+<h3>Tra cứu lịch sử</h3>
+
+<PageTitle>Package</PageTitle>
+<p><a href="/packageregister">Đăng ký gói</a></p>
+@if (myObject == null)
+{
+    <div class="spinner-border" role="status">
+        <span class="sr-only"></span>
+    </div>
+    <p>Loading...</p>
+}
+else
+{
+    <EditForm Model="@hisRequest" OnSubmit=@SearchPackage>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Mã gói</label>
+                    <InputText id="CodePackage" class="form-control" placeholder="Tên khách hàng"
+                               @bind-Value="hisRequest.NameCus" />
+                    <ValidationMessage For="()=>hisRequest.NameCus"></ValidationMessage>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Tên gói</label>
+                    <InputText id="CodePackage" class="form-control" placeholder="Tên gói"
+                               @bind-Value="hisRequest.NamPackage" />
+                    <ValidationMessage For="()=>hisRequest.NamPackage"></ValidationMessage>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Từ ngày</label>
+                    <InputDate Type="InputDateType.Date" id="CodePackage" format-value="yyyy-MM-dd" class="form-control" placeholder="Từ ngày"
+                               @bind-Value="@hisRequest.FromDate" />
+                    <ValidationMessage For="()=>hisRequest.FromDate"></ValidationMessage>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Đến ngày</label>
+                    <InputDate id="CodePackage" class="form-control" placeholder="Đến ngày"
+                               @bind-Value="hisRequest.ToDate" />
+                    <ValidationMessage For="()=>hisRequest.ToDate"></ValidationMessage>
+                </div>
+            </div>
+            <div class="col-md-2 mt-4"> <button type="submit" class="btn btn-primary">Search</button></div>
+        </div>
+    </EditForm>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tên khách hàng</th>
+                <th>Tên gói</th>
+                <th>Giá gói</th>
+                <th>Hành động</th>
+                <th>Ngày đăng ký</th>
+                <th>Trạng thái giao dịch</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (myObject.Items != null)
+                @foreach (var item in myObject.Items)
+                {
+                    <tr>
+                        <td>@item.NameCus</td>
+                        <td>@item.NamePackage</td>
+                        <td>@item.PricePackage</td>
+                        <td>@item.TypePackage</td>
+                        <td>@item.CreatedDate</td>
+                        <td>@item.Decription</td>
+                    </tr>
+                }
+        </tbody>
+    </table>
+}
+@code {
+    [CascadingParameter]
+    public EventCallback notify { get; set; }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await notify.InvokeAsync();
+        }
+    }
+}

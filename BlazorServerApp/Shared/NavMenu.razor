@@ -1,0 +1,41 @@
+﻿
+@using Blazored.LocalStorage
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">BlazorServerApp (@userLogin)</a>
+        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <nav class="flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="packagedata">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Danh sách gói cước
+            </NavLink>
+            <NavLink class="nav-link" href="/packageregister">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Đăng gói cước
+            </NavLink>
+            <NavLink class="nav-link" href="/packagehistory">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Tra cứu lịch sử
+            </NavLink>
+        </div>
+    </nav>
+</div>
+
+@code {
+    public static string userLogin = "";
+    private bool collapseNavMenu = true;
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    protected override  async Task OnInitializedAsync()
+    {
+            userLogin = await localStorage.GetItemAsync<string>("userName");
+    }
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

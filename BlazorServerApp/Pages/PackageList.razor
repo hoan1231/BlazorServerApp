@@ -1,0 +1,79 @@
+﻿@page "/packagedata"
+
+<PageTitle>Package</PageTitle>
+<h3>Danh sách gói cước</h3>
+<a href="/packageadd">Thêm mới</a>
+@if (myObject == null)
+{
+    <div class="spinner-border" role="status">
+        <span class="sr-only"></span>
+    </div>
+    <p>Loading...</p>
+}
+else
+{
+    <EditForm Model="@packageRequest" OnSubmit=@SearchPackage>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Mã gói</label>
+                    <InputText id="CodePackage" class="form-control" placeholder="Mã gói"
+                               @bind-Value="packageRequest.CodePackage" />
+                    <ValidationMessage For="()=>packageRequest.CodePackage"></ValidationMessage>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Tên gói</label>
+                    <InputText id="CodePackage" class="form-control" placeholder="Tên gói"
+                               @bind-Value="packageRequest.NamePackage" />
+                    <ValidationMessage For="()=>packageRequest.NamePackage"></ValidationMessage>
+                </div>
+            </div>
+            <div class="col-md-2 mt-4"> <button type="submit" class="btn btn-primary">Search</button></div>
+
+        </div>
+    </EditForm>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mã gói cước</th>
+                <th>Tên gói</th>
+                <th>Giá</th>
+                <th>Người tạo/Ngày tạo</th>
+                <th>Người cập nhật/Ngày cập nhật</th>
+                <th>Công cụ</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (myObject.Items != null)
+                @foreach (var item in myObject.Items)
+                {
+                    <tr>
+                        <td>@item.CodePackage</td>
+                        <td>@item.NamePackage</td>
+                        <td>@item.PricePackage</td>
+                        <td>@item.CreatedBy<br />@item.CreatedDate</td>
+                        <td>@item.UpdatedBy<br />@item.UpdatedDate</td>
+                        <td><a href="/editpackage/@item.ID">Edit</a>
+                        <button class="btn btn-danger" @onclick="()=>Delete_Click(item.ID)">Delete</button></td>
+                        <BlazorServerApp.Component.Confirmation @ref="DeleteConfirmation" 
+                             ConfirmationChanged="ConfirmDelete_Click" ConfirmationMessage=@($"Xác nhận xóa gói \"{item.NamePackage}\"")>
+                        </BlazorServerApp.Component.Confirmation>
+                    </tr>
+                }
+        </tbody>
+    </table>
+}
+
+@code {
+    [CascadingParameter]
+    public EventCallback notify { get; set; }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await notify.InvokeAsync();
+        }
+    }
+}

@@ -1,0 +1,87 @@
+syntax = "proto3";
+
+option csharp_namespace = "ManagementPackage";
+
+
+package mngpk;
+// The mngpackage service definition.
+service PackageProto {
+  rpc GetAll(MngPacketRequest) returns(MNGPackages);
+  rpc GetById(MngPacketRequest) returns(MNG_Package);
+  rpc AddPackage(MNG_Package) returns(MNGPackagesResponse);
+  rpc DeletePackage(MngPacketRequest) returns(MNGPackagesResponse);
+  rpc UpdatePackage(MNG_Package) returns(MNGPackagesResponse);
+  rpc GetInfoCustomer(MNG_InfoCustomerRequest) returns(MNG_InfoCustomerResonse);
+}
+message MngPacketRequest {
+  string ID=1;
+  string name = 2;
+  string code=3;
+
+}
+message MNG_Package {
+    string ID = 1;
+    string CodePackage = 2;
+    string NamePackage = 3;
+    string TypePackage = 4;
+    string PricePackage = 5;
+    string Decription = 6;
+    string CreatedBy = 7;
+    string CreatedDate = 8;
+    string UpdatedBy = 9;
+    string UpdatedDate = 10;
+}
+message MNGPackages {
+    repeated MNG_Package items = 1;
+}
+message MNGPackagesResponse {
+    string message = 1;
+    string statusCode = 2;
+}
+message MNG_InfoCustomerResonse {
+   string  UserName = 1;
+    string FullName = 2;
+    string UserId = 3;
+    string Amount = 4;
+}
+message MNG_InfoCustomerRequest {
+  string userName=1;
+  string passWord = 2;
+}
+service TransactionPackageProto {
+  rpc GetHisTransactionPackage(HisTransactionSearchRequest) returns(HisTransactions);
+  rpc AddTransactionPackage(HisTransactionRequest) returns(HisTransactionResponse);
+  rpc GetTransactionPackage(HisTransactionSearchRequest) returns(HisTransactions);
+  rpc DeleteTransactionPackage(HisTransactionRequest) returns(HisTransactionResponse);
+
+}
+message HisTransactionSearchRequest {
+  string NameCus=1;
+  string NamPackage = 2;
+  string FromDate=3;
+  string ToDate=4;
+
+}
+message HisTransactionRequest {
+  string CusId=1;
+  string PackageId = 2;
+  string CreatedBy=3;
+}
+message HisTransaction {
+    string ID = 1;
+    string NameCus = 2;
+    string NamePackage = 3;
+    string TypePackage = 4;
+    string PricePackage = 5;
+    string Decription = 6;
+    string CreatedBy = 7;
+    string CreatedDate = 8;
+}
+message HisTransactions {
+    repeated HisTransaction items = 1;
+}
+message HisTransactionResponse {
+    string message = 1;
+    string statusCode = 2;
+
+}

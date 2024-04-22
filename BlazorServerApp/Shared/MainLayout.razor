@@ -1,0 +1,53 @@
+﻿@inherits LayoutComponentBase
+@using Blazored.LocalStorage
+@using Blazored.Toast
+@inject NavigationManager navManager;
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+<PageTitle>BlazorServerApp</PageTitle>
+<div class="page">
+        <BlazoredToasts />
+    @if (isLogin)
+    {
+        <div class="sidebar">
+            <NavMenu />
+    </div>
+    }
+    <main>
+        @if (isLogin)
+        {
+            <div class="top-row px-4">
+                <a href="#" @onclick="LogOut">LogOut</a>
+            </div>
+        }
+        <article class="content px-4">
+            <CascadingValue Value="event_notify">   @Body</CascadingValue>
+            <script src="_content/Syncfusion.Blazor.Core/scripts/syncfusion-blazor.min.js" type="text/javascript"></script>
+
+        </article>
+    </main>
+</div>
+@code
+{
+    public bool isLogin = false;
+    EventCallback event_notify => EventCallback.Factory.Create(this, NotifyLayout);
+    private async Task NotifyLayout()
+    {
+        if (localStorage != null)
+        {
+            var authToken = await localStorage.GetItemAsync<string>("authToken");
+            if (authToken != null && authToken.ToString() == "Success")
+            {
+                isLogin = true;
+            }
+            else navManager.NavigateTo("/login");
+        }
+    }
+
+    public void LogOut()
+    {
+        isLogin = false;
+        navManager.NavigateTo("/login");
+        localStorage.RemoveItemAsync("authToken");
+        localStorage.RemoveItemAsync("userName");
+    }
+}

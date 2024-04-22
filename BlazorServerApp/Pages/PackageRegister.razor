@@ -1,0 +1,125 @@
+﻿@page "/packageregister"
+<h3>Đăng ký gói cước</h3>
+@if (lstPackage == null)
+{
+    <div class="spinner-border" role="status">
+        <span class="sr-only"></span>
+    </div>
+    <p>Loading...</p>
+}
+else
+{
+<EditForm Model="@hisRequest" OnSubmit=@RegisterPackage>
+    <DataAnnotationsValidator />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Mã gói</label>
+                    <InputSelect class="form-control" @bind-Value="hisRequest.PackageId">
+                    <option value="">--Chọn gói--</option>
+                         @if (lstPackage.Items != null)
+                        {
+                            @foreach (var item in lstPackage.Items)
+                            {
+                                <option value="@item.ID">@item.NamePackage</option>
+                            }
+                        } 
+                </InputSelect>
+                    <ValidationMessage For="()=>hisRequest.PackageId"></ValidationMessage>
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Đăng ký</button>
+        </div>
+    </div>
+</EditForm>
+<hr />
+    <h3>Danh sách gói cước đã đăng ký</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tên gói</th>
+                <th>Mã gói</th>
+                <th>Giá gói</th>
+                <th>Ngày đăng ký</th>
+                <th></th>
+            </tr>
+        </thead>
+         <tbody>
+            @if (myObject!=null && myObject.Items != null)
+                @foreach (var item in myObject.Items)
+                {
+                    <tr>
+                        <td>@item.NamePackage</td>
+                        <td>@item.NamePackage</td>
+                        <td>@item.PricePackage</td>
+                        <td>@item.CreatedBy<br />@item.CreatedDate</td>
+                        <td>
+                            <button class="btn btn-danger" @onclick="()=>Cancel_Click(item.ID)">Hủy gói</button>
+                        </td>
+                    @*     <BlazorServerApp.Component.Confirmation @ref="CancelConfirmation"
+                                                                ConfirmationChanged="ConfirmCancle_Click" ButtonTitle=@("Xác nhận") ConfirmationTitle=@("Hủy gói") ConfirmationMessage=@($"Xác nhận hủy gói \"{item.NamePackage}\"")>
+                        </BlazorServerApp.Component.Confirmation> *@
+                    </tr>
+                }
+        </tbody> 
+    </table>
+}
+
+@* @if (myObject == null)
+{
+    <div class="spinner-border" role="status">
+        <span class="sr-only"></span>
+    </div>
+    <p>Loading...</p>
+}
+else
+{
+     <EditForm Model="@hisRequest" OnSubmit=@RegisterPackage>
+        <DataAnnotationsValidator />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Mã gói</label>
+                    <InputText id="CodePackage" class="form-control" placeholder="Mã gói"
+                               @bind-Value="hisRequest.CusId" />
+                    <ValidationMessage For="()=>hisRequest.CusId"></ValidationMessage>
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </EditForm> 
+    <h3>Danh sách gói cước đã đăng ký</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tên gói</th>
+                <th>Mã gói</th>
+                <th>Giá gói</th>
+                <th>Ngày đăng ký</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (myObject.Items != null)
+                @foreach (var item in myObject.Items)
+                {
+                    <tr>
+                        <td>@item.NamePackage</td>
+                        <td>@item.NamePackage</td>
+                        <td>@item.PricePackage</td>
+                        <td>@item.CreatedBy<br />@item.CreatedDate</td>
+                    </tr>
+                }
+        </tbody>
+    </table> 
+}*@
+
+@code {
+    [CascadingParameter]
+    public EventCallback notify { get; set; }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await notify.InvokeAsync();
+        }
+    }
+}
