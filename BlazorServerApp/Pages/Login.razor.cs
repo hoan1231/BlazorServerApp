@@ -20,7 +20,7 @@ namespace BlazorServerApp.Pages
 
         public LoginModel login = new LoginModel { UserName="",PassWord="11" };
         private bool loading = false;
-        private string Error = "";
+        private string Error = "333";
         async Task LoginUser(EditContext editContext)
         {
             loading = true;
