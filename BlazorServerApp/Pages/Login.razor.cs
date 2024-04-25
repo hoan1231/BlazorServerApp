@@ -18,7 +18,7 @@ namespace BlazorServerApp.Pages
         [Inject] public ILocalStorageService _localStorageService { get; set; }
         [Inject] private IPackageBzService packageBzService { get; set; }
 
-        public LoginModel login = new LoginModel { UserName="",PassWord="11" };
+        public LoginModel login = new LoginModel { UserName="",PassWord="113333" };
         private bool loading = false;
         private string Error = "";
         async Task LoginUser(EditContext editContext)
