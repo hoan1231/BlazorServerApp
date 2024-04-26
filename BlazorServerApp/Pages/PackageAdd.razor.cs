@@ -15,6 +15,8 @@ namespace BlazorServerApp.Pages
         [Inject] private IPackageBzService packageBzService { get; set; }
          [Inject] public IToastService toastService { get; set; }
         private PackageModel packageRequest = new PackageModel();
+        private string Error12 = "66666";
+
         async Task AddPackage()
         {
             var userLogin = await _localStorageService.GetItemAsync<string>("userName");
