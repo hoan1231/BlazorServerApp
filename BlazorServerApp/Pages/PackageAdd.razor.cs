@@ -14,6 +14,7 @@ namespace BlazorServerApp.Pages
         [Inject] public NavigationManager NavigationManager { get; set; }
         [Inject] private IPackageBzService packageBzService { get; set; }
          [Inject] public IToastService toastService { get; set; }
+         [Inject] public IToastService toastService11 { get; set; }
         private PackageModel packageRequest = new PackageModel();
         async Task AddPackage()
         {
